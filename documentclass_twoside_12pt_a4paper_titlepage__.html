@@ -1,0 +1,785 @@
+\documentclass[twoside, 12pt, a4paper, titlepage, twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[landscape, margin=1cm]{geometry}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+	
+	\title{MCLA Concise Review: Linear Algebra} % LA Chapter 2
+	\author{Neel Kapse}
+	\date{}
+	\maketitle{}
+	
+	\tableofcontents
+	\pagebreak
+	
+	
+	\section{Definitions}
+	
+	A linear equation in \(n\) variables \( x_1, x_2, \dots, x_n \) is an equation that can be written in the form\\
+	\[ a_1 x_1 + a_2 x_2 + \dots + a_n x_n = b \] 
+	where \(a_1, a_2, \dots, a_n\) and \(b\) are constant.\\
+	
+	A system of linear equations is a finite set of linear equations, each ith the same variables.\\ 
+	A solution of a sysytem of linear equations is a vector that is simultaneously a solution of each equation in the system.\\
+	
+	\section{Solutions of Systems}
+	
+	A system of linear equations with real coefficients can be classified as:\\
+	
+	\begin{itemize}
+		\item Consistent System
+			\begin{itemize} 
+				\item one unique solution
+				\item infinitely many solutions
+			\end{itemize}
+		\item Inconsistent System
+			\begin{itemize} 
+				\item no solutions
+			\end{itemize}
+	\end{itemize}
+	
+	\section{Augmented Matrix}
+	
+	The augmented matrix is a structure for organizing and processing a system of linear equations.\\
+	Each row is an equation, where \(a_{ij}\) represents a coefficient and each column represents a variable \(x_i\).\\
+	Each \(k_j\) is the constant for the respective equation.\\
+ 
+    \[
+     A_{m,n} =
+     \begin{bmatrix}
+      a_{11} & a_{12} & \cdots & a_{1n} & k_1\\
+      a_{21} & a_{22} & \cdots & a_{2n} & k_2\\
+      \vdots  & \vdots  & \ddots & \vdots  & \vdots\\
+      a_{m1} & a_{m2} & \cdots & a_{mn} & k_m
+     \end{bmatrix}
+    \]
+	
+	\[ [A|\mathbf{b}] \]
+	
+	Coefficient matrix: \(A\)\\
+	Column vector of constant terms: \(\mathbf{b}\)\\
+		
+	Any operations which can be done on individual equations, keeping the solution set invariant, can be applied to the rows of augmented matrices.\\
+	
+	\section{Row Echelon Form}
+	
+	A matrix is in row echelon form if:\\
+	\begin{itemize}
+		\item Any zero rows are at the bottom
+		\item In each nonzero row, the leading entry (first nonzero entry) is in a column to the left of any leading entries below it
+	\end{itemize}
+	
+	The row echelon form representation is not unique.\\
+	
+	\section{Elementary Row Operations}
+	
+	Elementary row operations are the operations which can be performed on a matrix while keeping the solution set constant.\\
+	
+	\begin{enumerate}
+		\item \(R_i \leftrightarrow R_j \): Interchange 2 rows
+		\item \(kR_i\): Multiply a row by a nonzero constant
+		\item \(R_i + kRj\): Add a multiple of a row to another row
+	\end{enumerate}
+	
+	Elementary row operations are "reversible".\\
+	Row reduction: process of using elementary row operations to bring a matrix into row echelon form.\\
+	
+	\paragraph{Row Equivalence}
+	
+	Matrices \(A, B\) are row equivalent of there is a equence of elementary row operations that converts \(A\) into \(B\).\\
+	
+	Matrices \(A, B\) are row equivalent iff they can be reduced to the same row echelon form.\\
+	
+	\section{Gaussian Elimination}
+	
+	\begin{enumerate}
+		\item Consider augmented matrix of system.
+		\item Reduce matrix to row echelon form.
+		\item Use back-substitution to solve resultant equivalent system.
+	\end{enumerate}
+	
+	\section{Rank Theorem}
+	
+	\(A\) is the coefficient matrix of a system of linear equations with \(n\) variables.\\
+	The system is consistent. Then:\\
+	\[ \textrm{number of free variables} = n - \textrm{rank}(A)\]
+	
+	\section{Reduced Row Echelon Form}
+	
+	Conditions:\\
+	\begin{enumerate}
+		\item It is in row echelon form.
+		\item The leading entry in each nonzero row is a 1 (a leading 1).
+		\item Each column containing a leading 1 has zeros in all other locations.\\
+	\end{enumerate}
+		
+	\section{Gauss-Jordan Elimination}
+	
+	\begin{enumerate}
+		\item Consider augmented matrix of system.
+		\item Reduce matrix to reduced row echelon form.
+		\item Solve resultant equivalent system for leading variables in terms of any remaining free variables.
+	\end{enumerate}
+	
+	\section{Homogenous Equations}
+	
+	If \([A|\mathbf{0}]\) is a homogenous system of \(m\) linear equations with \(n\) variables, where \(m < n\), then the system has infinitely many solutions.\\ 
+	
+	\section{Linear Independence}
+	
+	A system of linear equations with augmented matrix \([A|\mathbf{b}]\) is consistent iff \(\mathbf{b}\) is a linear combination of the columns of \(A\).\\
+	Vectors \(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k \) in \(\mathbb{R}^n\) are linearly dependent iff at least one of the vectors can be expressed as a linear combination of the others.\\
+	
+	%\newline
+	
+	\(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_m \) are column vectors in \(\mathbb{R}^n\).\\
+	\(A\) is the \(n \times m\) matrix \( [\mathbf{v}_1 \mathbf{v}_2 \dots \mathbf{v}_m]\). (The vectors are columns of \(A \)).\\
+	\(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k \) are linearly dependent iff the homogenous linear system with augmented matrix \([A|\mathbf{0}] \) has a nontrivial solution.\\
+	
+	%\newline
+	
+	\(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_m \) are row vectors in \(\mathbb{R}^n\) nd let \(A\) be the \(m \times n\) matrix \(
+	\begin{bmatrix}
+		\mathbf{v}_1 \\
+		\mathbf{v}_2 \\
+		\vdots \\
+		\mathbf{v}_m \\
+	\end{bmatrix} \). Then \(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_m\) are linearly dependent iff \(\textrm{rank}(A) < m\).\\
+	
+	%\newline
+	
+	Any set of \(m\) vectors in \(mathbb{R}^n\) is linearly dependent if \(m>n\).\\
+	
+	
+	% Consider adding approximation methods
+	
+	\section{Matrix Algebra}
+	
+	\[ A + B = [a_{ij} + b_{ij}] \]
+	\[ cA = c[a_{ij}] = [ca_{ij}] \]
+	\[ -A = [-a_{ij}] \]
+	\[ A + O = O + A = A \]
+	
+	\[ A_{m \times n}B_{n \times r} = C_{m \times r} = [a_{i1}b_{1j} + a_{i2}b_{2j} \dots + a_{in}b_{nj}] \]
+	
+	%\newline
+	
+	\(A\) is an \(m \times n\) matrix.\\
+	\(\mathbf{e}_i\) is a \( 1 \times m \) standard unit vector.\\
+	\(\mathbf{e}_j\) is an \( n \times 1 \) standard unit vector.\\
+	
+	\begin{itemize}
+		\item \(\mathbf{e}_iA\) is the \(i\)th row of \(A\)
+		\item \(A\mathbf{e}_j\) is the \(j\)th column of \(A\)
+	\end{itemize}
+	
+	Matrices can be partitioned into blocks. Such matrices must be treated as composed of submatrices when processing them.\\
+	
+	%\newline
+	
+	Matrix exponents can only be performed past the first power on square matrices.\\
+	If \(A\) is a square matrix and \(r, s \in \mathbb{R}, r, s \geq 0 \), then:\\
+	\begin{itemize}
+		\item \(A^rA^s  A^{r+s}\)
+		\item \((A^r)^s = A^{rs}\)
+	\end{itemize}
+	 
+		
+	A square matrix \(A\) is symmetric iff \(A_{ij} = A_{ji} \forall i, j\).
+	
+	\section{Properties of Matrix Addition}
+	
+	\(A, B, C\) are matrices of the same size.\\
+	\(c, d\) are scalars.\\
+	
+	\begin{enumerate}
+		\item \(A + B = B + A\)
+		\item \((A + B) + C = A + (B + C)\)
+		\item \(A + O = A\)
+		\item \(A + (-A) = O\)
+		\item \( c(A + B) = cA + cB\)
+		\item \( (c+d)A = cA + dA\)
+		\item \(c(dA)=(cd)A\)
+		\item \(1A = A\)
+	\end{enumerate}
+	
+	\section{Properties of Matrix Multiplication}
+	
+	\(A, B, C\) are matrices of convenient sizes.\\
+	\(k\) is a scalars.\\
+	
+	\begin{enumerate}
+		\item \(A(BC)=(AB)C \)
+		\item \(A(B+C)=AB+AC\)
+		\item \((A+B)C=+BC\)
+		\item \(k(AB)=(kA)B=A(kB)\)
+		\item \( I_mA_{m \times n}=A_{m \times n}=A_{m \times n}I_n\)
+	\end{enumerate}
+	
+	\section{Properties of the Transpose}
+	
+	\(A, B\) are matrices of convenient sizes.\\
+	\(k\) is a scalar.\\
+	
+	\begin{enumerate}
+		\item \((A^T)^T = A \) 
+		\item \((A+B)^T=A^T+B^T\)
+		\item \((kA)^T=k(A^T)\)
+		\item \(AB)^T=B^TA^T\)
+		\item \((A^r)^T=(A^T)^r\)
+	\end{enumerate}
+	
+	%\newline
+	
+	If \(A\) is a square matrix, \(A+A^T\) is symmetric.\\
+	%\newline
+	\(AA^T, A^TA\) are symmetric for all matrices \(A\).\\
+	
+	\section{Matrix Inverses}
+	
+	If \(A\) is invertible, its inverse is unique.\\
+	
+	%\newline
+	
+	\(A_{n \times n}\) is an invertible matrix. The system of linear equations given by \(A\mathbf{x}=\mathbf{b}\) has the unique solution \(\mathbf{x} = A^{-1} \mathbf{b} \forall \mathbf{b} \in \mathbb{R}^n \).
+	
+	\subsection{Inverse of \(2 \times 2\) Matrix}
+	
+	\(A = 
+	\begin{bmatrix}
+		a & b\\
+		c & d\\
+	\end{bmatrix}\).\\
+	\(A\) is invertible iff \(ad-bc=\neq 0\).\\ 
+	If \(A\) is invertible, then:\\
+	\[A^{-1}  \frac{1}{ad-bc}
+	 \begin{bmatrix}
+		d & -b\\
+		-c & a\\
+	\end{bmatrix}\]
+	
+	\subsection{Properties of Invertible Matrices}
+	\(A, B\) are invertible matrices of the same size.\\
+	\(c\) is a nonzero scalar.\\
+	\begin{itemize}
+		\item \(A^{-1}\) is invertible, and \((A^{-1})^{-1} = A\)
+		\item \(cA\) is invertible. \((cA)^{-1}  \frac{1}{c}A^{-1} \)
+		\item \(AB\) is invertible. \( (AB)^{-1} = B^{-1}A^{-1} \)
+		\item \(A^T\) is invertible. \((A^T)^{-1} = (A^{-1})^T\)
+		\item \(A^n\) is invertible \(\forall n \in \mathbb{Z}, n \geq 0\). \((A^n)^{-1} = (A^{-1})^n \)
+	\end{itemize}
+	
+	If \(A_1, A_2, \dots, A_n\) are invertible, \((A_1A_2\dots A_n)^{-1} = A_n^{-1} \dots A_2^{-1} A_1^{-1} \).\\
+	
+	If \(A\) is invertible and \(n \in \mathbb{Z}, n > 0\), then \( A^{-n} = (A^{-1})^n = (A^n)^{-1} \).\\
+	
+	\section{Elementary Matrices}
+	
+	Let \(E\) be the elementary matrix obtained by performing an elementary row operation on \(I_n\).\\
+	If the same row operation is performed on \(A_{n \times r}\), the result is the matrix \(EA\).\\
+	
+	%\newline
+	
+	Every elementary matrix is invertible, and its inverse is an elementary matrix of the same type.\\
+	
+	%\newline
+	%\newline
+	
+	\(A\) is a square matrix. If \(B\) is a square matrix, and either \(AB=I\) or \(BA=I\), \(A\) is invertible and \(B=A^{-1}\).\\
+	%\newline
+	\(A\) is a square matrix. If a sequence of elementary row operations reduces \(A\) to \(I\), the same sequence of row operations transforms \(I\) into \(A\) (basis for Gauss-Jordan Method of finding inverse).\\
+	
+	%Gauss Jordan Method for finding inverse?
+	
+	\section{\(LU\) Factorization}
+	
+	If \(A\) is a square matrix that can be reduced to row echelon form without any row interchanges, \(A\) has an \(LU\) factorization.\\
+	If \(A\) is invertible and has an \(LU\) factorization, then \(L, U\) are unique.\\
+	
+	\subsection{\(P^TLU\) Factorization}
+	
+	If \(P\) is a permutation matrix, then \(P^{-1} = P^T\).\\
+	
+	Every square matrix has a \(P^TLU\) factorization.\\
+	
+	\section{Subspace}
+	
+	\(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k\) are vectors in \(\mathbb{R}^n\). Then \(\textrm{span}(\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k)\) is a subspace of \(\mathbb{R}^n\).\\
+	
+	\(A, B\) are row equivalent. Then \(\textrm{row}(A) = \textrm{row}(A)\).\\
+	%\newline
+	\(N\) is the set of solutions of the homogenous linear system \(A_{m \times n} \mathbf{x} = \mathbf{0}\). Then \(N\) is a subspace of \(\mathbb{R}^n\).\\
+	
+	The entries of \(A\) are real numbers.\\
+	For any system of linear equations \(A \mathbf{x} = \mathbf{0}\), exactly one of the following is true:\\
+	\begin{enumerate}
+		\item There is no solution.
+		\item There is a unique solution.
+		\item There are infinitely many solutions.
+	\end{enumerate}
+	
+	\section{The Basis Theorem}
+	
+	\(S\) is a subspace of \(\mathbb{R}^n\). Then any 2 bases for \(S\) have the same number of vectors.\\
+	
+	\section{Dimension}
+	
+	The row and column spaces of matrix \(A\) have the same dimension. 
+	
+	\section{Rank}
+	
+	For any matrix \(A\), \(\textrm{rank}(A^T) = \textrm{rank}(A)\).\\
+	
+	\subsection{Rank Theorem}
+	
+	\[ \textrm{rank}(A_{m \times n}) + \textrm{nullity}(A_{m \times n}) = n \]
+	
+	Consider \(A_{m \times n}\).\\
+	\begin{itemize}
+		\item \(\textrm{rank}(A^TA) = \textrm{rank}(A) \)
+		\item The \(n \times n\) matrix \(A^TA\) is invertible iff \(\textrm{rank}(A) = n\)
+	\end{itemize}
+	
+	\section{Coordinates}
+	
+	\(S\) is a subspace of \(\mathbb{R}^n\).\\
+	\(\mathcal{B} = {\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k}\) is a basis for \(S\).\\
+	For every vector \(\mathbf{v} \in S\) there is exactly one way to write \(\mathbf{v}\) as a linear combination of the basis vectors in \(\mathcal{B}\):\\
+	\(\mathbf{v} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \dots + c_k\mathbf{v}_k \)
+	
+	%\newline
+	
+	\section{Linear Transformation}
+	
+	\(T: \mathbb{R}^n \to \mathbb{R}^m \) is a linear transformation if \(T(c_1\mathbf{v_1}+c_2\mathbf{v_2})= c_1T(\mathbf{v_1}) + c_2T(\mathbf{v_2}) \forall \mathbf{v_1, v_2} \in \mathbb{R}^n, \textrm{scalars} c_1, c_2 \)\\
+	
+	Consider \(A_{m \times n}\).\\
+	\(T_A: \mathbb{R}^n \to \mathbb{R}^m \) defined by \(T_A(\mathbf{x}) = A\mathbf{x} (\forall \mathbf{x} \in \mathbb{R}^n)\) 
+	
+	\section{Determinants}
+	
+	\subsection{Laplace Expansion Theorem}
+	
+	If \(n \geq 2\), then:
+	
+	\[ |A| = \Sigma_{j=1}^n a_{ij}C_{ij} = \Sigma_{i=1}^n a_{ij}C_{ij} \]
+	
+	\subsection{Properties of Determinants}
+	
+	\begin{enumerate}
+		\item If \(A\) has a zero row/column, det\(A\) = 0.
+		\item If \(B\) is obtained by interchanging 2 rows/columns of \(A\), then det\(B = -\) det \(A\).
+		\item If \(A\) has 2 identical rows/columns, det \(A\) = 0.
+		\item If \(B\) is obtained by multiplying a row/column of \(A\) by \(k\), then det\(B = k\) det \(A\).
+		\item If \(A, B, C\) are identical except that the \(i\)th row/column of \(C\) is the sum of the \(i\)th rows/columns of \(A\) and \(B\), then det \(C\) = det \(A\) + det \(B\).
+		\item If \(B\) is obtained by adding a multiple of one row/column of \(A\) to another, then det\(B = \) det \(A\).
+		
+	\subsection{Determinants of Elementary Matrices}
+	
+	Consider an elementary matrix \(E_{n \times n}\).\\
+	\begin{enumerate}
+		\item If \(E\) results from interchanging 2 rows of \(I_n\), then det \(E = -1\).
+		\item If \(E\) results from multiplying 1 row of \(I_n\) by \(k\), then det \(E = k\).  
+		\item If \(E\) results from adding a multiple of 1 row of \(I_n\) to another row, then det \(E = 1\).  
+	\end{enumerate}
+	
+	Consider \(B_{n \times n}\) and elementary \(E_{n \times n}\).\\
+	det \((EB)\) = (det \(E\))(det \(B\))\\
+	
+	%\newline
+	
+	A square matrix \(A\) is invertible iff det \(A \neq 0\).\\
+	
+	\subsection{Determinants and Matrix Operations}
+	
+	Consider \(A{n \times n}\). \\
+	det\((kA) = k^n\) det \(A\)\\ 
+	
+	Consider \(A{n \times n}, B{n \times n}\).\\
+	det\((AB) = (\) det \(A)(\) det \(B)\)\\
+	
+	If \(A\) is invertible: det \((A^{-1}) = \frac{1}{\textrm{det} A} \)\\
+	
+	For any square matrix \(A\), det \(A = \) det \(A^T\)\\
+	
+	%Cramer's Rule, Adjoint?
+	
+	\section{Eigenvalues and Eigenvectors of \(n \times n\) Matrices}
+	
+	The eigenvalues of a square matrix \(A\) are the solutions \(\lambda\) of the equation det \( (A - \lambda I) = 0\).\\
+	
+	A square matrix \(A\) is invertible iff \(0\) is not an eigenvalue of \(A\).\\
+	
+	\section{Similarity}
+	
+	Consider \(A_{n \times n}, B_{n \times n}, C_{n \times n}\)
+	\begin{enumerate}
+		\item \(A \sim A\)
+		\item \(A \sim B \implies B \sim A\)
+		\item \(A \sim B, B \sim C \implies A \sim C\)
+	\end{enumerate}
+	
+	Consider \(A_{n \times n}, B_{n \times n}\), where \(A \sim B\). Then:\\
+	\begin{enumerate}
+		\item det \(A = \) det \(B\) 
+		\item \(A\) is invertible iff \(B\) is invertible
+		\item \(A, B\) have the same rank
+		\item \(A, B\) have the same characteristic equation
+		\item \(A, B\) have the same eigenvalues
+	\end{enumerate}
+		
+	\section{Diagonalization}
+	
+	Consider \(A_{n \times n}\). \(A\) is diagonalizable iff \(A\) has \(n\) linearly independent vectors. (Columns of \(P\) are \(n\) linearly independent eigenvectors of \(A\) and the diagonal entries of \(D\) are the eigenvalues of \(A\) corresponding to the eigenvectors in the same order).\\
+	
+	Consider \(A_{n \times n}\) with distinct eigenvalues \(\lambda_1, \lambda_1, \dots \lambda_k\).\\
+	\(\mathcal{B}_i\) is a basis for the eigenspace \(E_\lambda\).
+	Then, \(\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2 \cup \dots \cup \mathcal{B}_k\) is linearly independent.\\
+	
+	If \(A_{n \times n}\) has \(n\) distinct eigenvalues, then \(A\) is diagonalizable.\\
+	
+	\subsection{Diagonalization Theorem}
+	
+	Consider \(A_{n \times n}\), whose distinct eigenvalues are \(\lambda_1, \lambda_2, \dots, \lambda_k\).\\
+	The following statements are equivalent:\\
+	
+	\begin{enumerate}
+		\item \(A\) is diagonalizable.
+		\item The union \(\mathcal{B}\) of the eigenspaces of \(A\) contains \(n\) vectors.
+		\item The algebraic multiplicity of each eigenvalue equals its geometric multiplicity.
+	\end{enumerate}
+	
+	\section{Orthogonality}
+	
+	If \({\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n}\)  is an orthogonal set of nonzero vectors in \(\mathbb{R}^n\), then these vectors are linearly independent.
+	
+	\({\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n}\) is an orthogonal basis for a subspace \(W\) of \(\mathbb{R}^n\).\\
+	\(\mathbf{w}\) is any vector in \(W\). Then the unique scalars \(c_1, c_2, \dots, c_k\) such that \( \mathbf{w} = c_1 \mathbf{v}_1 + c_2 \mathbf{v}_2 + \dots + c_k \mathbf{v}_k\) are given by:\\
+	
+	\[ c_i = \mathbf{\frac{w \cdot v_i}{v_i \cdot v_i}} \]
+	
+	\({\mathbf{q}_1, \mathbf{q}_2, \dots, \mathbf{q}_n}\) is an orthonormal basis for a subspace \(W\) of \(\mathbb{R}^n\).\\
+	\(\mathbf{w}\) is any vector in \(W\). Then:\\
+	\[ \mathbf{w} = \mathbf{(w \cdot q_1)q_1} + \mathbf{(w \cdot q_2)q_2} + \dots + \mathbf{(w \cdot q_k)q_k}\]
+	and this representation is unique.\\
+	
+	\subsection{Orthogonal Matrices}
+	
+	\(Q_{n \times n}\) is orthogonal iff \(Q^TQ = I_n \).\\
+	A square matrix \(Q\) is orthogonal iff \(Q^{-1} = Q^T\).\\
+	
+	Consider \(Q_{n \times n}\). The following statements are equivalent:\\
+	\begin{enumerate}
+		\item \(Q\) is orthogonal.
+		\item \(\parallel Q \mathbf{x}\parallel = \parallel \mathbf{x} \parallel \forall \mathbf{x} \in \mathbb{R}^n\)
+		\item \(Q \mathbf{x} \cdot Q \mathbf{y} = \mathbf{x \cdot y} \forall \mathbf{x, y} \in \mathbb{R}^n \)
+	\end{enumerate}
+	
+	If \(Q\) is orthogonal, then its rows form an orthonormal set.\\
+	
+	Consider orthogonal \(Q\). 
+	
+	\begin{enumerate}
+		\item \(Q^{-1}\) is orthogonal.
+		\item det \(Q = \pm 1 \)
+		\item If \(\lambda\) is an eigenvalue of \(Q\), then \(|\lambda| = 1\).
+		\item If \(Q_1, Q_2\) are orthogonal \( n\times n\) matrices, then so is \(Q_1Q_2\).
+	\end{enumerate}
+	
+	\section{Orthogonal Complements}
+	
+	Consider \(W\), a subspace of \(\mathbb{R}^n\). 
+	\begin{enumerate}
+		\item \(W^{\perp}\) is a subspace of \(\mathbb{R}^n\).
+		\item\((W^{\perp})^{\perp} = W\)
+		\item \(W \cap W^{\perp} = {\mathbf{0}} \)
+		\item If \(W = \textrm{span}( \mathbf{w_1, w_2, \dots, w_k} )\), then \(\mathbf{v} \in W^{\perp} \iff \mathbf{v \cdot w_i} = 0 \forall i = 1, 2, \dots, k\)
+	\end{enumerate}
+	
+	Consider \(A_{m \times n}\).\\
+	\((\textrm{row}_{(A)})^{\perp} = \textrm{null}_{(A)}\)\\
+	\((\textrm{col}_{(A)})^{\perp} = \textrm{null}_{(A^T)}\)\\
+	
+	The component of \( \mathbf{v} \) orthogonal to \(W\) is the vector \( \textrm{perp}_W ( \mathbf{v}) = \mathbf{v} - \textrm{proj}_W( \mathbf{v}) \).\\
+	\subsection{Orthogonal Decomposition}
+	
+	\(W\) is a subspace of \( \mathbb{R}^n \).\\
+	\( \mathbf{v} \) is a vector in \( \mathbb{R}^n \).\\
+	Then there are unique vectors \( \mathbf{w} \) in \(W\) and \( \mathbf{w}^{\perp} \) in \(W^{\perp}\) such that \( \mathbf{v = w + w^{\perp}} \).\\
+	
+	If \(W\) is a subspace of \( \mathbb{R}^n \), then: \( (W^{\perp})^{\perp} = W \).\\
+	  
+	If \(W\) is a subspace of \( \mathbb{R}^n \), then: \( \textrm{dim} W + \textrm{dim} W^{\perp} = n \)
+	
+	\subsection{Rank Theorem}
+	
+	Consider \( A_{m \times n} \). Then: \( \textrm{rank}(A) + \textrm{nullity}(A) = n \)
+	
+	\section{Gram-Schmidt Process} 
+	
+	Let \( \mathbf{{x_1, x_2, \dots x_k}} \) be a basis for a subspace \(W\) of \( \mathbb{R}^n \) and define the following:
+	
+	\( \mathbf{v_1 = x_1} \)\\
+	\( \mathbf{v_2 = x_2 - \left( \frac{v_1 \cdot x_2}{v_1 \cdot v_1} \right) v_1}\)\\
+	\( \vdots\)\\
+	\( \mathbf{v_k = x_k - \left( \frac{v_1 \cdot x_2}{v_1 \cdot v_1} \right) v_1} - \dots \ \left( \frac{v_{k-1} \cdot x_k}{v_{k-1} \cdot v_{k-1}} \right) v_{k-1} \).\\
+	Then, for \( i = 1, 2, \dots k\), \( \mathbf{{v_1, v_2, \dots v_i}} \) is an orthogonal basis for \(W_i\). 
+	
+	\section{QR Factorization}
+	
+	Consider \(A_{m \times n}\) with linearly independent columns.\\
+	Then \(A\) can be factored as \(A=QR\), where \(Q_{m \times n}\) has orthonormal, and \(R\) is an invertible upper triangle matrix.\\
+	
+	\section{Orthogonal Diagonalization}
+	
+	If \(A\) is orthogonally diagonalizable, it is also symmetric.\\
+	If \(A\) is a real symmetric matrix, then the eigenvalues of \(A\) are real.\\
+	
+	\section{Spectral Theorem}
+	
+	Consider \(A_{n \times n}\). \(A\) is symmetric iff it is orthogonally diagonalizable.\\
+	
+	Spectral Decomposition of \(A\):\\
+	\[ A = \lambda_1 \mathbf{q_1q_1^T} + \lambda_2 \mathbf{q_2q_2^T} + \dots + \lambda_n \mathbf{q_nq_n^T} \]
+	
+	\section{Principal Axes Theorem}
+	
+	Every quadratic form can be diagonalized.\\
+	If \(A_{n \times n}\) is the symmetric matrix associated with the quadratic form \( \mathbf{x}^TA \mathbf{x}\), and if \(Q\) is an orthogonal matrix such that \( Q^TAQ = D\) is a diagonal matrix, then the change of variable \( \mathbf{x} = Q \mathbf{y} \) transforms the quadratic form \( \mathbf{x}^TA \mathbf{x}\) into the quadratic form \( \mathbf{y}^TD \mathbf{y}\), which has no cross-product terms.\\
+	If the eigenvalues of \(A\) are \( \lambda_1, \dots, \lambda_n \) and \( \mathbf{y} = [y_1 \dots y_n]^T \), then:
+	\[ \mathbf{x}^TA \mathbf{x} = \mathbf{y}^TD \mathbf{y} = \lambda_1 y_1^2 + \dots + \lambda_n y_n^2 \]
+	
+	
+	% Possibly take out Quadratic forms section
+	\subsection{Quadratic Forms}
+	
+	A quadratic form \( \mathbf{x}^TA \mathbf{x}\) can be classified as:
+	
+	\begin{description}
+		\item{Positive Definite} \(f( \mathbf{x} ) > 0 \forall \mathbf{x \neq 0} \)
+		\item{Positive Semidefinite} \(f( \mathbf{x} ) \geq 0 \forall \mathbf{x} \) 
+		\item{Negative Definite} \(f( \mathbf{x} ) < 0 \forall \mathbf{x \neq 0} \) 
+		\item{Negative Semidefinite} \(f( \mathbf{x} ) \leq 0 \forall \mathbf{x} \) 
+		\item{Indefinite} \(f( \mathbf{x} ) \) takes on both positive and negative values.
+	\end{description}
+	
+	
+	A symmetric matrix \(A\) is classified as above if the associated quadratic form has the corresponding property.\\
+	
+	Consider \(A_{n \times n}\). The quadratic form \( f( \mathbf{x}) \mathbf{x}^TA \mathbf{x}\) 
+	
+	\begin{description}
+		\item{Positive Definite} \(f( \mathbf{x} ) > 0 \forall \mathbf{x \neq 0} \)
+		\item{Positive Semidefinite} \(f( \mathbf{x} ) \geq 0 \forall \mathbf{x} \) 
+		\item{Negative Definite} \(f( \mathbf{x} ) < 0 \forall \mathbf{x \neq 0} \) 
+		\item{Negative Semidefinite} \(f( \mathbf{x} ) \leq 0 \forall \mathbf{x} \) 
+		\item{Indefinite} \(f( \mathbf{x} ) \) takes on both positive and negative values.
+	\end{description}
+		
+	\section{Vector Spaces}
+	
+	Nearly all results using the space \( \mathbb{R}^n\) can be extended to general vector spaces. Many are left out here.\\
+	
+	\(V\) is a set on which addition and scalar multiplication are defined.\\
+	If the following axioms hold for all \( \mathbf{u, v, w}\in V\) and for all scalars \(c, d\), then \(V\) is a vector space, and its elements are vectors.\\
+	
+	\begin{enumerate}
+		\item \( \mathbf{u + v} \in V\)
+		\item \( \mathbf{u+v=v+u}\)
+		\item \( \mathbf{(u+v)+w=u+(v+w)}\)
+		\item \( \exists \mathbf{0} \in V: \mathbf{u + 0=u}\)
+		\item \( \forall \mathbf{u} \in V \exists \mathbf{-u} \in V \textrm{such that} \mathbf{u + (-u) = 0 } \)
+		\item \(c \mathbf{u} \in V\)
+		\item \( c \mathbf{(u+v)} = c \mathbf{u} + c \mathbf{v} \)
+		\item \( (c+d) \mathbf{u} = c \mathbf{u} + d \mathbf{u} \)
+		\item \( c(d \mathbf{u}) = (cd) \mathbf{u} \)
+		\item \( 1 \mathbf{u} = \mathbf{u} \)
+	\end{enumerate}
+	
+	\(V\) is a vector space.\\
+	\( \mathbf{u} \) is a vector in \(V\), and \(c\) is a scalar.\\
+	
+	\begin{enumerate}
+		\item \( \mathbf{0u=0} \)
+		\item \( c\mathbf{0=0} \)
+		\item \( (-1)\mathbf{u=-u} \)
+		\item \( c \mathbf{u=0} \implies c=0 \textrm{or} \mathbf{u} = \mathbf{0} \)
+	\end{enumerate}
+	
+	If \(V\) is a vector space and \(W\) is a nonempty subset of \(V\), \(W\) is a subset iff \(W\) is closed over sddition and multiplication.\\
+	
+	If \(W\) is a subspace of a vector space \(V\), then \(W\) contains the zero vector \(0\) of V.\\
+	
+	%\newline
+	
+	\( \mathbf{v_1, v_2, \dots, v_k} \) are vectors in vector space \(V\).\\ 
+	\begin{itemize}
+		\item span\((\mathbf{v_1, v_2, \dots, v_k})\) is a subspace of \(V\).
+		\item span\((\mathbf{v_1, v_2, \dots, v_k})\) is the smallest subspace of \(V\) that contains \(\mathbf{v_1, \dots, v_k}\)
+	\end{itemize}
+	
+	Consider \(V\), a vector space, and \( \mathcal{B}\), a basis. For every vector \( \mathbf{v} \in V\), there is exactly one way to write \( \mathbf{v} \) as a linear combination of the basis vectors in \( \mathcal{B} \).\\
+	
+	%\newline
+	
+	\( \mathcal{B} \) is a basis for a vector space \(V\). \( \mathbf{u, v} \in V\) and \(c\) is a scalar.Then: \\
+	\begin{enumerate}
+		\item \( [ \mathbf{u+v} ]_{\mathcal{B}} = [ \mathbf{u} ]_{\mathcal{B}} + [ \mathbf{v} ]_{\mathcal{B}} \)
+		\item \( [ c\mathbf{u} ]_{\mathcal{B}} = c[ \mathbf{u} ]_{\mathcal{B}} \)
+	\end{enumerate}
+	
+	%\newline
+	
+	\(\mathcal{B}\) is a basis for vector space \(V\).
+	\begin{enumerate}
+		\item Any set of more than \(n\) vectors in \(V\) is linearly dependent.
+		\item Any set of fewer than \(n\) vectors cannot span \(V\).
+	\end{enumerate}
+	
+	\subsection{Basis Theorem}
+	
+	If a vector space \(V\) has a basis with \(n\) vectors, then every basis for \(V\) has exactly \(n\) vectors.\\
+	
+	%\newline
+	
+	\(V \) is a vector space with dim \(V = n\). Then:
+	\begin{enumerate}
+		\item Any linearly independent set in \(V\) contains at most \(n\) vectors.
+		\item Any spanning set for \(V\) contains at least \(n\) vectors.
+		\item Any linearly independent set of exactly \(n\) vectors in \(V\) is a basis for \(V\).
+		\item Any spanning set for \(V\) sconsisting of exactly \(n\) vectors is a basis of \(V\).
+		\item Any linearly independent set in \(V\) can be extended to a basis for \(V\).
+		\item Any spanning set for \(V\) can be reduced to a basis for \(V\).
+	\end{enumerate}
+	
+	%Change of Basis
+	%Kernel, Range of Linear Transformation
+	
+	\section{Linear Transformation}
+	
+	Linear transsformations and their properties extend entirely from their application to \( \mathbb{R}^n \).\\
+	
+	\section{Kernel and Range}
+	
+	Consider linear transformation\(T:V \to W\).
+	
+	\begin{enumerate}
+		\item \( \textrm{ker}(T) \) is a subspace of \(V\)
+		\item \( \textrm{range}(T) \) is a subspace of \(W\)
+	\end{enumerate}
+	
+	\section{The Matrix of a Transformation}
+	
+	Consider \(V, W\), 2 finite-dimensional spaces with bases \( \mathcal{B, C} \) respectively, where \( \mathcal{B} = \mathbf{v}_1, \dots, \mathbf{v}_n \).\\
+	\( T: V \to W\) is a linear transformation.\\
+	Then \( A_{m \times n} = [[T( \mathbf{v}_1 )]_{\mathcal{C}} | [T( \mathbf{v}_2 )]_{\mathcal{C}} | \dots | [T( \mathbf{v}_n )]_{\mathcal{C}}]\) satisfies 
+	\[ A[ \mathbf{v} ]_{\mathcal{B}} = [T( \mathbf{v} )]_{\mathcal{C}} \] 
+	\( \forall \mathbf{v} \in V\).
+	
+	\section{Distances with Vectors}
+	
+	\subsection{Pythagoras' Theorem}
+	
+	Consider \( \mathbf{u, v}\), vectors in an inner product space \(V\).\\
+	\( \mathbf{u, v}\) are orthogonal iff 
+	\[ \parallel \mathbf{u+v} \parallel^2 = \parallel \mathbf{u} \parallel^2 + \parallel \mathbf{v} \parallel^2 \]
+	
+	\subsection{Cauchy-Schwartz Inequality} 
+	
+	Consider \( \mathbf{u, v}\), vectors in an inner product space \(V\).\\
+	Then:\\
+	\[ |\langle \mathbf{u, v} \rangle | \leq \parallel \mathbf{u} \parallel \parallel \mathbf{v} \parallel  \] 
+	with equality holding iff \( \mathbf{u, v} \) are scalar multiples of each other.\\
+	
+	\subsection{Triangle Inequality}
+	
+	Consider \( \mathbf{u, v}\), vectors in an inner product space \(V\).\\
+	Then:\\
+	\[ \parallel \mathbf{u + v} \parallel \leq \parallel \mathbf{u} \parallel + \parallel \mathbf{v} \parallel  \]
+	
+	\section{Orthogonal Projection: Augmented}
+	
+	\(W\) is a subspace of \( \mathbb{R}^m \), and the columns of \(A_{m \times n} \) form a basis for \(W\) If \( \mathbf{v} \in \mathbb{R}^n\):
+	\[ proj_W( \mathbf{v} ) = A(A^TA)^{-1} A^T \mathbf{v} \]
+	
+	\section{Pseudoinverse}
+	
+	\(A\) is a matrix with linearly independent columns. The pseudoinverse of \(A\) satisfies:
+	\begin{enumerate}
+		\item \(AA^+A = A\)
+		\item \(A^+AA^+=A+\)
+		\item \(AA^+\) and \(A^+A\) are symmetric.
+	\end{enumerate}
+	
+	\section{Singular Value Decomposition}
+	
+	"SVD"
+	Consider matrix \(A_{m \times n} \) with singular values \( \sigma_1 \geq \sigma_2 \geq \dots \ \sigma_r > 0 \) and \( \sigma_{r+1} = \sigma_{r+2} = \dots = \sigma_n \). Then, there exist orthogonal matrix \( U_{m \times m}\), orthogonal matrix \( V_{n \times n} \),  and matrix \(\Sigma_{m \times n}\) of the form: \( 
+	\begin{bmatrix}
+		\sigma_1 & \dots & 0 &  \\
+		\vdots & \ddots & \vdots & O\\
+		0 & \dots & \sigma_r &  \\
+		 & O & & O
+	\end{bmatrix}  \) such that:
+	
+	\[ A = U\Sigma V^T \]
+	
+	\subsection{Outer Product Form of the SVD}
+	
+	Consider matrix \(A_{m \times n} \) with singular values \( \sigma_1 \geq \sigma_2 \geq \dots \ \sigma_r > 0 \) and \( \sigma_{r+1} = \sigma_{r+2} = \dots = \sigma_n \).\\
+	\( \mathbf{u}_1, \dots, \mathbf{u}_r \) are left singular vectors and \( \mathbf{v}_1, \dots, \mathbf{v}_r \) are right singular vectors of \(A\) corresponding to these singular values. Then:\\
+	\[ A = \sigma_1 \mathbf{u_1v_1^T} + \dots + \sigma_r \mathbf{u_rv_r^T} \]
+	
+	
+	%\newline
+	
+	\(A = U\Sigma V^T\) is an SVD of \(A_{m \times n} \).\\
+	Let \( \sigma_1, \dots, \sigma_r\) be all the nonzero singular values of \(A\). Then:\\
+	
+	\begin{enumerate}
+		\item \( \textrm{rank}(A) = r \)
+		\item \( \mathbf{u}_1, \dots, \mathbf{u}_r \) is an orthonormal basis for \(\textrm{col}(A)\).
+		\item \( \mathbf{u}_{r+1}, \dots, \mathbf{u}_m \) is an orthonormal basis for \(\textrm{null}(A^T)\).
+		\item \( \mathbf{v}_1, \dots, \mathbf{v}_r \) is an orthonormal basis for \(\textrm{row}(A)\).
+		\item \( \mathbf{v}_{r+1}, \dots, \mathbf{v}_n \) is an orthonormal basis for \(\textrm{null}(A)\).
+	\end{enumerate}
+	
+	
+	\section{The Fundamental Theorem of Invertible Matrices: Final Version}
+	
+	Consider the matrix \(A_{n \times n}\).\\
+	\( T: V \to W \) is a linear transformation whose matrix \( [T]_{\mathcal{C \leftarrow B}} \) with respect to bases \(\mathcal{B, C}\) of \(V, W\) respectively, is \(A\).\\
+	The following statements are equivalent:
+	
+	\begin{enumerate}
+		\item \(A\) is invertible.
+		\item \(A \mathbf{x=b} \) has a unique solution for every \( \mathbf{b} \in \mathbb{R}^n \).
+		\item \(A \mathbf{x=0} \) has only the trivial solution.
+		\item The reduced row echelon form of \(A\) is \(I_n\).
+		\item \( A\) is a product of elementary matrices.
+		\item \(\textrm{rank}(A) = n\)
+		\item \(\textrm{nullity}(A) = 0\)
+		\item The column vectors of \(A\) are linearly independent.
+		\item The column vectors of \(A\) span \( \mathbb{R}^n \).
+		\item The column vectors of \(A\) form a basis for \( \mathbb{R}^n \).
+		\item The row vectors of \(A\) are linearly independent. 
+		\item The row vectors of \(A\) span \( \mathbb{R}^n \).
+		\item The row vectors of \(A\) form a basis for \( \mathbb{R}^n \).
+		\item \( \textrm{det} A \neq 0\)
+		\item \(0\) is not an eigenvalue of \(A\).
+		\item \(T\) is invertible.
+		\item \(T\) is one-to-one.
+		\item \(T\) is onto.
+		\item \(\textrm{ker}(T) = \mathbf{{0}} \) 
+		\item \(\textrm{range}(T) = W \) 
+		\item \(0\) is not a singular value of \(A\).
+	\end{enumerate}
+		
+\end{document}
