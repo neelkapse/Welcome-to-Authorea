@@ -1,3 +1,4 @@
 untitled.html
 A_test_of_LaTeX_code__.tex
 This_is_a_sample_LaTeX__.tex
+figures/CornellStreetMagic/CornellStreetMagic.jpg
