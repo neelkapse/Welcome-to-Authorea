@@ -1,14 +1,14 @@
 % This is a sample LaTeX input file.  (Version of 12 August 2004.)
 %
-% A &#x27;%&#x27; character causes TeX to ignore all remaining text on the line,
+% A &amp;#x27;%&amp;#x27; character causes TeX to ignore all remaining text on the line,
 % and is used for comments like this one.
 
 \documentclass{article}      % Specifies the document class
 
                              % The preamble begins here.
-\title{An Example Document}  % Declares the document&#x27;s title.
-\author{Leslie Lamport}      % Declares the author&#x27;s name.
-\date{January 21, 1994}      % Deleting this command produces today&#x27;s date.
+\title{An Example Document}  % Declares the document&amp;#x27;s title.
+\author{Leslie Lamport}      % Declares the author&amp;#x27;s name.
+\date{January 21, 1994}      % Deleting this command produces today&amp;#x27;s date.
 
 \newcommand{\ip}[2]{(#1, #2)}
                              % Defines \ip{arg1}{arg2} to mean
@@ -31,7 +31,7 @@ produce a simple document of your own.
                              % \subsection and \subsubsection commands.
 
 The ends  of words and sentences are marked 
-  by   spaces. It  doesn&#x27;t matter how many 
+  by   spaces. It  doesn&amp;#x27;t matter how many 
 spaces    you type; one is as good as 100.  The
 end of   a line counts as a space.
 
@@ -54,12 +54,12 @@ there are a number of things that you have to do
 differently when preparing an input file than if
 you were just typing the document directly.
 Quotation marks like
-       ``this&#x27;&#x27; 
+       ``this&amp;#x27;&amp;#x27; 
 have to be handled specially, as do quotes within
 quotes:
-       ``\,`this&#x27;            % \, separates the double and single quote.
+       ``\,`this&amp;#x27;            % \, separates the double and single quote.
         is what I just 
-        wrote, not  `that&#x27;\,&#x27;&#x27;.  
+        wrote, not  `that&amp;#x27;\,&amp;#x27;&amp;#x27;.  
 
 Dashes come in three sizes: an 
        intra-word 
@@ -74,17 +74,17 @@ space between words within a sentence.  You
 sometimes have to type special commands in
 conjunction with punctuation characters to get
 this right, as in the following sentence.
-       Gnats, gnus, etc.\ all  % `\ &#x27; makes an inter-word space.
+       Gnats, gnus, etc.\ all  % `\ &amp;#x27; makes an inter-word space.
        begin with G\@.         % \@ marks end-of-sentence punctuation.
 You should check the spaces after periods when
-reading your output to make sure you haven&#x27;t
+reading your output to make sure you haven&amp;#x27;t
 forgotten any special cases.  Generating an
 ellipsis
-       \ldots\               % `\ &#x27; is needed after `\ldots&#x27; because TeX 
+       \ldots\               % `\ &amp;#x27; is needed after `\ldots&amp;#x27; because TeX 
                              % ignores spaces after command names like \ldots 
                              % made from \ + letters.
                              %
-                             % Note how a `%&#x27; character causes TeX to ignore 
+                             % Note how a `%&amp;#x27; character causes TeX to ignore 
                              % the end of the input line, so these blank lines 
                              % do not start a new paragraph.
                              %
@@ -95,7 +95,7 @@ a special command.
 commands, so you must type special commands to
 generate them.  These characters include the
 following:
-       \$ \&amp; \% \# \{ and \}.
+       \$ \&amp;amp; \% \# \{ and \}.
 
 In printing, text is usually emphasized with an
        \emph{italic}  
@@ -109,9 +109,9 @@ type style.
 
 It is sometimes necessary to prevent \LaTeX\ from
 breaking a line where it might otherwise do so.
-This may be at a space, as between the ``Mr.&#x27;&#x27;\ and
-``Jones&#x27;&#x27; in
-       ``Mr.~Jones&#x27;&#x27;,        % ~ produces an unbreakable interword space.
+This may be at a space, as between the ``Mr.&amp;#x27;&amp;#x27;\ and
+``Jones&amp;#x27;&amp;#x27; in
+       ``Mr.~Jones&amp;#x27;&amp;#x27;,        % ~ produces an unbreakable interword space.
 or within a word---especially when the word is a
 symbol like
        \mbox{\emph{itemnum}} 
@@ -125,7 +125,7 @@ pose no problem.
 like
        \( x-3y + z = 7 \) 
 or
-       \( a_{1} &gt; x^{2n} + y^{2n} &gt; x&#x27; \)
+       \( a_{1} &amp;gt; x^{2n} + y^{2n} &amp;gt; x&amp;#x27; \)
 or  
        \( \ip{A}{B} = \sum_{i} a_{i} b_{i} \).
 The spaces you type in a formula are 
@@ -157,8 +157,8 @@ The following is an example of an \emph{itemized}
 list.
 \begin{itemize}
    \item This is the first item of an itemized list.
-         Each item in the list is marked with a ``tick&#x27;&#x27;.
-         You don&#x27;t have to worry about what kind of tick
+         Each item in the list is marked with a ``tick&amp;#x27;&amp;#x27;.
+         You don&amp;#x27;t have to worry about what kind of tick
          mark is used.
 
    \item This is the second item of the list.  It
@@ -188,7 +188,7 @@ You can even display poetry.
 
    For instead of making\\
    Them do \emph{all} line breaking, \\
-   It allows them to put too many words on a line when they&#x27;d rather be 
+   It allows them to put too many words on a line when they&amp;#x27;d rather be 
    forced to be terse.
 \end{verse}
 
@@ -197,8 +197,8 @@ displayed formula
 is 
 one-line long; multiline
 formulas require special formatting instructions.
-   \[  \ip{\Gamma}{\psi&#x27;} = x&#x27;&#x27; + y^{2} + z_{i}^{n}\]
-Don&#x27;t start a paragraph with a displayed equation,
+   \[  \ip{\Gamma}{\psi&amp;#x27;} = x&amp;#x27;&amp;#x27; + y^{2} + z_{i}^{n}\]
+Don&amp;#x27;t start a paragraph with a displayed equation,
 nor make one a paragraph by itself.
 
 \end{document}               % End of document.
